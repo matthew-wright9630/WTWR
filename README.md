@@ -6,7 +6,7 @@ This website receives weather information for the current location, then provide
 
 ## Technologies Used
 
-HTML, CSS, JavaScript, and React were used to create the functionality of the project. A API call to Openweathermap.org was used to get weather information.
+HTML, CSS, JavaScript, React, and Vite were used to create the functionality of the project. A API call to Openweathermap.org was used to get weather information.
 
 ## Links
 
