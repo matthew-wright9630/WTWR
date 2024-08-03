@@ -2,7 +2,11 @@
 
 ## About the project
 
-The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user.
+This website receives weather information for the current location, then provides suggestions on what clothing options to wear based on the temperature.
+
+## Technologies Used
+
+HTML, CSS, JavaScript, and React were used to create the functionality of the project. A API call to Openweathermap.org was used to get weather information.
 
 ## Links
 
