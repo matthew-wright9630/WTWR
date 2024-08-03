@@ -1,0 +1,30 @@
+.clothing__item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.clothing__title {
+  position: absolute;
+  margin: 0;
+  top: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #fff;
+}
+
+.clothing__image {
+  width: 100%;
+  height: 100%;
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  border-radius: 5%;
+}
+
+@media screen and (max-width: 580px) {
+  .clothing__title {
+    top: 4px;
+  }
+
+  .clothing__image {
+    height: 164px;
+  }
+}

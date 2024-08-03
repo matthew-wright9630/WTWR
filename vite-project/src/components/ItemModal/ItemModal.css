@@ -1,0 +1,44 @@
+.modal__container_item {
+  padding: 0;
+  width: 498px;
+  height: 610px;
+}
+
+.modal__image {
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.modal__item-name {
+  margin: 20px 0 12px 32px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.modal__weather-type {
+  margin: 0;
+  margin-left: 32px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 580px) {
+  .modal__container_item {
+    width: 343px;
+    height: 463px;
+    position: relative;
+    margin: 0 auto;
+    top: 25vh;
+  }
+
+  .modal__item-name {
+    margin-left: 20px;
+  }
+
+  .modal__weather-type {
+    margin-left: 20px;
+  }
+}
