@@ -11,4 +11,3 @@ HTML, CSS, JavaScript, React, and Vite were used to create the functionality of 
 ## Links
 
 - [Figma Design] (https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
-- https://matthew-wright9630.github.io/se-project-react-mw/
