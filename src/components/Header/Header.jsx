@@ -22,7 +22,6 @@ function Header({
         }`}
       >
         <button
-          // onClick={handleAddButtonClick}
           onClick={() => {
             handleAddButtonClick();
             toggleMobileMenu();

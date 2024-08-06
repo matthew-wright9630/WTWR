@@ -36,6 +36,32 @@ function App() {
     setActiveModal("");
   };
 
+  const isGarmentModalOpen = activeModal === "add-garment-modal";
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscPress = (evt) => {
+      if (evt.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    function handleOverlayClick(evt) {
+      if (evt.target.classList.contains("modal_opened")) {
+        handleCloseModal();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscPress);
+    document.addEventListener("mousedown", handleOverlayClick);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscPress);
+      document.removeEventListener("mousedown", handleOverlayClick);
+    };
+  }, [activeModal]);
+
   const toggleMobileMenu = () => {
     if (isMobileMenuOpen === true) {
       setMobilMenuOpen(false);
@@ -67,8 +93,8 @@ function App() {
         <ModalWithForm
           title="New garment"
           buttonTitle="Add garment"
-          activeModal={activeModal}
           handleCloseModal={handleCloseModal}
+          isOpen={isGarmentModalOpen}
         >
           <label htmlFor="name" className="modal__label">
             Name

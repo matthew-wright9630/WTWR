@@ -3,29 +3,6 @@ import React, { useEffect } from "react";
 import "./ItemModal.css";
 
 function ItemModal({ activeModal, selectedItem, handleCloseModal }) {
-  useEffect(() => {
-    function handleEscPress(evt) {
-      if (evt.key === "Escape") {
-        handleCloseModal();
-      }
-    }
-
-    function handleOverlayClick(evt) {
-      if (evt.target.classList.contains("modal_opened")) {
-        handleCloseModal();
-      }
-    }
-
-    if (activeModal === "item-modal") {
-      document.addEventListener("keydown", handleEscPress);
-      document.addEventListener("mousedown", handleOverlayClick);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscPress),
-        document.removeEventListener("mousedown", handleOverlayClick);
-    };
-  });
 
   return (
     <div

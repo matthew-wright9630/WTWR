@@ -134,10 +134,6 @@
     background-color: #fff;
   }
 
-  .header__profile-avatar {
-    /* visibility: hidden; */
-  }
-
   .header__menu-close-button_open {
     visibility: visible;
     z-index: 2;
