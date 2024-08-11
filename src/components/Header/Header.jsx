@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/WTWR-logo.svg";
 import avatar from "../../assets/avatar.png";
 import "./Header.css";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 function Header({
   handleAddButtonClick,
@@ -24,6 +25,7 @@ function Header({
           isMobileMenuOpen === true ? "header__container_open" : ""
         }`}
       >
+        <ToggleSwitch />
         <button
           onClick={() => {
             handleAddButtonClick();

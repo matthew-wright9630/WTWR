@@ -40,6 +40,12 @@
   width: 89px;
   height: 40px;
   cursor: pointer;
+  opacity: 1;
+  transition: linear .2s;
+}
+
+.header__logo:hover {
+  opacity: .5;
 }
 
 .header__date-location {
@@ -81,7 +87,7 @@
   transition: 0.2s linear;
 }
 
-.header__profile-name:hover {
+.header__profile-link:hover .header__profile-name {
   opacity: 0.5;
 }
 

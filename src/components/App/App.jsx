@@ -103,7 +103,6 @@ function App() {
             isMobileMenuOpen={isMobileMenuOpen}
             toggleMobileMenu={toggleMobileMenu}
           />
-          <ToggleSwitch />
           <Routes>
             <Route
               path="se_project_react/"
