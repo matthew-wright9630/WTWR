@@ -18,7 +18,7 @@ function filterWeatherData(data) {
   result.city = data.name;
   result.temp = {
     F: data.main.temp,
-    C: Math.round(((data.main.temp - 32) * 5) / 9),
+    C: (((data.main.temp - 32) * 5) / 9).toFixed(2),
   };
   result.type = setWeatherType(data.main.temp);
   result.condition = setWeatherCondition(data.weather);

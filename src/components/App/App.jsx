@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import Profile from "../Profile/Profile";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 import { apiKey, latitude, longitude } from "../../utils/constants";
@@ -104,9 +105,25 @@ function App() {
           />
           <ToggleSwitch />
           <Routes>
-            <Route></Route>
+            <Route
+              path="se_project_react/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleItemClick={handleItemClick}
+                />
+              }
+            ></Route>
+            <Route
+              path="se_project_react/profile"
+              element={
+                <Profile
+                  handleAddButtonClick={handleAddButtonClick}
+                  handleItemClick={handleItemClick}
+                />
+              }
+            ></Route>
           </Routes>
-          <Main weatherData={weatherData} handleItemClick={handleItemClick} />
           <Footer />
           <ModalWithForm
             title="New garment"

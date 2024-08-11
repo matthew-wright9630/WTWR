@@ -10,6 +10,7 @@
 .header__information {
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .header__menu-button {
@@ -30,9 +31,15 @@
   background-color: red;
 }
 
+.header__link {
+  width: 89px;
+  height: 40px;
+}
+
 .header__logo {
   width: 89px;
   height: 40px;
+  cursor: pointer;
 }
 
 .header__date-location {
@@ -52,22 +59,30 @@
   font-weight: 700;
   cursor: pointer;
   opacity: 1;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
 .header__add-button:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
-.header__profile-info {
+.header__profile-link {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
 }
 
 .header__profile-name {
   line-height: 1.2;
   margin: 0;
+  color: #000;
+  opacity: 1;
+  transition: 0.2s linear;
+}
+
+.header__profile-name:hover {
+  opacity: 0.5;
 }
 
 .header__profile-avatar {

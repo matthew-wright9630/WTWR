@@ -1,0 +1,9 @@
+.profile {
+  display: flex;
+  gap: 116px;
+  align-items: flex-start;
+}
+
+.profile__clothes-section {
+    flex-grow: 1;
+}
