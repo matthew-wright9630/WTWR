@@ -1,0 +1,25 @@
+.sidebar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.sidebar__name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 580px) {
+  .sidebar {
+    margin-left: auto;
+  }
+  
+  .sidebar__name {
+    font-size: 24px;
+  }
+}

@@ -5,7 +5,7 @@ function ItemCard({ item, onItemClick }) {
     <div className="clothing__item">
       <h2 className="clothing__title">{item.name}</h2>
       <img
-        src={item.link}
+        src={item.imageUrl}
         alt={item.name}
         className="clothing__image"
         onClick={() => {

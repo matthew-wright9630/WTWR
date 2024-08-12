@@ -1,8 +1,5 @@
 .temp {
-  /* width: 56px;
-  height: 28px;
-  border-radius: 20px;
-  border: 2px solid #7e7e7e; */
+  display: flex;
 }
 
 .temp__switch__checkbox {
@@ -14,7 +11,7 @@
 .temp__switch__label {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; 
   cursor: pointer;
   width: 56px;
   height: 28px;
@@ -22,26 +19,26 @@
   border-radius: 20px;
   position: relative;
   transition: background-color 0.2s;
-  border: 2px solid #7E7E7E;
+  border: 2px solid #7e7e7e;
 }
 
 .temp__swtich__text {
-    margin: 0;
-    color: #fff;
-    position: absolute;
-    z-index: 2;
-    transition: linear .3s;
+  margin: 0;
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  transition: linear 0.3s;
 }
 
 .temp__switch__text_fahrenheit {
-    top: 5px;
-    left: 9px;
+  top: 5px;
+  left: 9px;
 }
 
 .temp__switch__text_celcius {
-    color: #7E7E7E;
-    top: 5px;
-    right: 9px;
+  color: #7e7e7e;
+  top: 5px;
+  right: 9px;
 }
 
 .temp__switch__label .temp__switch__button {
@@ -57,17 +54,25 @@
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 }
 
+.temp__switch__label:hover .temp__switch__button {
+  width: calc(50% + 2px);
+}
+
 .temp__switch__checkbox:checked + .temp__switch__label .temp__switch__button {
   left: 100%;
   transform: translateX(-100%);
 }
 
-.temp__switch__checkbox:checked + .temp__switch__label .temp__switch__text_fahrenheit {
-    color: #7E7E7E;
+.temp__switch__checkbox:checked
+  + .temp__switch__label
+  .temp__switch__text_fahrenheit {
+  color: #7e7e7e;
 }
 
-.temp__switch__checkbox:checked + .temp__switch__label .temp__switch__text_celcius {
-    color: #fff;
+.temp__switch__checkbox:checked
+  + .temp__switch__label
+  .temp__switch__text_celcius {
+  color: #fff;
 }
 
 .temp__switch__label:active .temp__switch__button {
