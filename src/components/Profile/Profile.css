@@ -7,3 +7,10 @@
 .profile__clothes-section {
     flex-grow: 1;
 }
+
+@media screen and (max-width: 580px) {
+  .profile {
+    flex-direction: column;
+    border-top: 1px rgba(0,0,0,.3) solid;
+  }
+}

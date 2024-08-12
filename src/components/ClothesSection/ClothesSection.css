@@ -1,5 +1,5 @@
 .clothing-section {
-
+  width: 90vw;
 }
 
 .clothing-section__header {
@@ -24,4 +24,11 @@
 
 .clothing-section__list {
     padding: 0;
+}
+
+@media screen and (max-width: 580px) {
+  .clothing-section__header {
+    justify-content: space-between;
+    border-top: 1px rgba(0,0,0,.3) solid;
+  }
 }

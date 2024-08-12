@@ -13,7 +13,11 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { getWeather, filterWeatherData } from "../../utils/WeatherApi";
 import { apiKey, latitude, longitude } from "../../utils/constants";
-import { addClothingItem, getClothingItems } from "../../utils/api";
+import {
+  addClothingItem,
+  deleteClothingItem,
+  getClothingItems,
+} from "../../utils/api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
@@ -45,7 +49,6 @@ function App() {
   };
 
   const handleToggleSwitchChange = () => {
-    console.log("temp has been changed");
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
@@ -57,19 +60,16 @@ function App() {
       setClothingItems([data, ...clothingItems]);
     });
     handleCloseModal();
-    getClothingItems().then((data) => {
-      console.log(data);
-      setClothingItems(data);
-    });
   };
 
   const handleCardDelete = (item) => {
-    console.log("delete");
-    console.log(item, "item");
+    deleteClothingItem(item).then((data) => {
+      setClothingItems([data, ...clothingItems]);
+    });
+    handleCloseModal();
   };
 
-  const openConfirmationModal = (item) => {
-    console.log("confirmation");
+  const openConfirmationModal = () => {
     setActiveModal("card-delete-modal");
   };
 
@@ -117,7 +117,6 @@ function App() {
       .catch(console.error);
 
     getClothingItems().then((data) => {
-      console.log(data);
       setClothingItems(data);
     });
   }, []);
@@ -151,6 +150,7 @@ function App() {
                 <Profile
                   handleAddButtonClick={handleAddButtonClick}
                   handleItemClick={handleItemClick}
+                  clothingItems={clothingItems}
                 />
               }
             ></Route>
@@ -173,6 +173,7 @@ function App() {
             isOpen={isConfirmationModalOpen}
             handleCloseModal={handleCloseModal}
             handleCardDelete={handleCardDelete}
+            selectedItem={selectedItem}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

@@ -3,18 +3,23 @@ import { useState } from "react";
 import "./AddItemModal.css";
 
 function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
-  const [inputName, setInputName] = useState(" ");
-  const [inputUrl, setInputUrl] = useState(" ");
-  const [inputWeatherType, setInputWeatherType] = useState("");
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [weather, setWeather] = useState("");
 
   const handleNameChange = (event) => {
-    setInputName(event.target.value);
+    setName(event.target.value);
   };
   const handleUrlChange = (event) => {
-    setInputUrl(event.target.value);
+    setImageUrl(event.target.value);
   };
   const handleWeatherTypeChange = (event) => {
-    setInputWeatherType(event.target.value);
+    setWeather(event.target.value);
+  };
+  const handleReset = () => {
+    setName("");
+    setImageUrl("");
+    setWeather("");
   };
 
   return (
@@ -24,7 +29,8 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
       handleCloseModal={onCloseModal}
       isOpen={isOpen}
       handleSubmit={(evt) => {
-        onAddItem(evt, { inputName, inputUrl, inputWeatherType });
+        onAddItem(evt, { name, imageUrl, weather });
+        handleReset();
       }}
     >
       <label htmlFor="name" className="modal__label">
@@ -35,7 +41,8 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
           className="modal__input"
           id="name"
           placeholder="Name"
-          value={inputName}
+          value={name}
+          required
         />
       </label>
       <label htmlFor="image" className="modal__label">
@@ -46,7 +53,8 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
           className="modal__input"
           id="image"
           placeholder="Image URL"
-          value={inputUrl}
+          value={imageUrl}
+          required
         />
       </label>
       <fieldset className="modal__fieldset_radio" required>

@@ -22,4 +22,12 @@ function addClothingItem({ name, imageUrl, weather }) {
   });
 }
 
-export { getClothingItems, addClothingItem };
+function deleteClothingItem(item) {
+  return fetch(`${baseUrl}/items/${item._id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    return res ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+}
+
+export { getClothingItems, addClothingItem, deleteClothingItem };
