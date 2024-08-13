@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 
 import "./ItemModal.css";
 
-function ItemModal({ activeModal, selectedItem, handleCloseModal, openConfirmationModal }) {
+function ItemModal({
+  activeModal,
+  selectedItem,
+  handleCloseModal,
+  openConfirmationModal,
+}) {
   return (
     <div
       className={`modal ${activeModal === "item-modal" ? "modal_opened" : ""}`}
@@ -25,7 +30,13 @@ function ItemModal({ activeModal, selectedItem, handleCloseModal, openConfirmati
               Weather: {selectedItem.weather}
             </p>
           </div>
-          <button onClick={openConfirmationModal} type="button" className="modal__delete-btn">Delete Item</button>
+          <button
+            onClick={openConfirmationModal}
+            type="button"
+            className="modal__delete-btn"
+          >
+            Delete Item
+          </button>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 .sidebar {
+  max-width: 10vw;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -10,15 +11,15 @@
 }
 
 .sidebar__name {
-    font-size: 20px;
-    font-weight: 700;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 580px) {
   .sidebar {
     margin-left: auto;
   }
-  
+
   .sidebar__name {
     font-size: 24px;
   }

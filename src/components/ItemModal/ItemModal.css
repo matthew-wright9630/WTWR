@@ -34,19 +34,18 @@
   padding: 20px 32px 0 0;
   background-color: #fff;
   border: none;
-  color: #FF4D00;
+  color: #ff4d00;
   font-size: 20px;
   font-weight: 700;
   align-self: flex-start;
   cursor: pointer;
   opacity: 1;
-  transition: .2s linear;
+  transition: 0.2s linear;
 }
 
 .modal__delete-btn:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
-
 
 @media screen and (max-width: 580px) {
   .modal__container_item {
