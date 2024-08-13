@@ -13,7 +13,7 @@ function Header({
   return (
     <header className={`header`}>
       <div className="header__information">
-        <Link className="header__link" to="se_project_react/">
+        <Link className="header__link" to="/">
           <img src={logo} alt="WTWR Logo" className="header__logo" />
         </Link>
         <p className="header__date-location">
@@ -36,7 +36,7 @@ function Header({
         >
           + Add clothes
         </button>
-        <Link className="header__profile-link" to="se_project_react/profile">
+        <Link className="header__profile-link" to="/profile">
           <p className="header__profile-name">Terrence Tegene</p>
           <img
             src={avatar}
