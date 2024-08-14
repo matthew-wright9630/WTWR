@@ -17,47 +17,47 @@ const weatherImageOptions = [
   {
     isDay: true,
     condition: "storm",
-    imageUrl: new URL("../../assets/stormDay.png", import.meta.url).href,
+    imageUrl: new URL("../assets/stormDay.png", import.meta.url).href,
   },
   {
     isDay: true,
     condition: "snow",
-    imageUrl: new URL("../../assets/snowDay.png", import.meta.url).href,
+    imageUrl: new URL("../assets/snowDay.png", import.meta.url).href,
   },
   {
     isDay: true,
     condition: "fog",
-    imageUrl: new URL("../../assets/fogDay.png", import.meta.url).href,
+    imageUrl: new URL("../assets/fogDay.png", import.meta.url).href,
   },
   {
     isDay: false,
     condition: "cloudy",
-    imageUrl: new URL("../../assets/cloudyNight.png", import.meta.url).href,
+    imageUrl: new URL("../assets/cloudyNight.png", import.meta.url).href,
   },
   {
     isDay: false,
     condition: "sunny",
-    imageUrl: new URL("../../assets/sunnyNight.png", import.meta.url).href,
+    imageUrl: new URL("../assets/sunnyNight.png", import.meta.url).href,
   },
   {
     isDay: false,
     condition: "rain",
-    imageUrl: new URL("../../assets/rainNight.png", import.meta.url).href,
+    imageUrl: new URL("../assets/rainNight.png", import.meta.url).href,
   },
   {
     isDay: false,
     condition: "storm",
-    imageUrl: new URL("../../assets/stormNight.png", import.meta.url).href,
+    imageUrl: new URL("../assets/stormNight.png", import.meta.url).href,
   },
   {
     isDay: false,
     condition: "snow",
-    imageUrl: new URL("../../assets/snowNight.png", import.meta.url).href,
+    imageUrl: new URL("../assets/snowNight.png", import.meta.url).href,
   },
   {
     isDay: false,
     condition: "fog",
-    imageUrl: new URL("../../assets/fogNight.png", import.meta.url).href,
+    imageUrl: new URL("../assets/fogNight.png", import.meta.url).href,
   },
 ];
 

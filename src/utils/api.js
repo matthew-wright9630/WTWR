@@ -25,7 +25,11 @@ function addClothingItem({ name, imageUrl, weather }) {
 function deleteClothingItem(item) {
   return fetch(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   }).then((res) => {
+    console.log(res);
     return res ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
 }

@@ -4,11 +4,12 @@ import { useState } from "react";
 function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState(null);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
+
   const handleUrlChange = (event) => {
     setImageUrl(event.target.value);
   };
@@ -18,7 +19,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
   const handleReset = () => {
     setName("");
     setImageUrl("");
-    setWeather("");
+    setWeather(null);
   };
 
   return (
@@ -42,6 +43,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
           placeholder="Name"
           value={name}
           required
+          minLength={2}
         />
       </label>
       <label htmlFor="image" className="modal__label">
@@ -66,6 +68,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
             id="hot"
             name="weather-type"
             value="hot"
+            checked={weather === "hot"}
           />
           <label htmlFor="hot" className="modal__label_radio">
             Hot
@@ -79,6 +82,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
             id="warm"
             name="weather-type"
             value="warm"
+            checked={weather === "warm"}
           />
           <label htmlFor="warm" className="modal__label_radio">
             Warm
@@ -92,6 +96,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
             id="cold"
             name="weather-type"
             value="cold"
+            checked={weather === "cold"}
           />
           <label htmlFor="cold" className="modal__label_radio">
             Cold

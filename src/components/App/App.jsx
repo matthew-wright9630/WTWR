@@ -62,9 +62,9 @@ function App() {
     handleCloseModal();
   };
 
-  const handleCardDelete = (item) => {
-    deleteClothingItem(item).then((data) => {
-      setClothingItems([data, ...clothingItems]);
+  const handleCardDelete = (itemToDelete) => {
+    deleteClothingItem(itemToDelete).then((data) => {
+      setClothingItems((prev) => prev.filter((item) => item._id !== itemToDelete._id));
     });
     handleCloseModal();
   };
