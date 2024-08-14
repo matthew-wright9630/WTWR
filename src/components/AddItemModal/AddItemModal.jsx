@@ -1,25 +1,15 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
 
-function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState(null);
+function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
+  const { values, handleChange, setValues } = useForm({
+    name: "",
+    imageUrl: "",
+    weather: null,
+  });
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
-  const handleUrlChange = (event) => {
-    setImageUrl(event.target.value);
-  };
-  const handleWeatherTypeChange = (event) => {
-    setWeather(event.target.value);
-  };
   const handleReset = () => {
-    setName("");
-    setImageUrl("");
-    setWeather(null);
+    setValues({ name: "", imageUrl: "", weather: null });
   };
 
   return (
@@ -28,20 +18,22 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
       buttonTitle="Add garment"
       handleCloseModal={onCloseModal}
       isOpen={isOpen}
+      buttonText={isLoading ? "Saving..." : "Add Garment"}
       handleSubmit={(evt) => {
-        onAddItem(evt, { name, imageUrl, weather });
-        handleReset();
+        evt.preventDefault();
+        onAddItem(evt, values, handleReset);
       }}
     >
       <label htmlFor="name" className="modal__label">
         Name
         <input
-          onChange={handleNameChange}
+          onChange={handleChange}
           type="text"
           className="modal__input"
+          name="name"
           id="name"
           placeholder="Name"
-          value={name}
+          value={values.name}
           required
           minLength={2}
         />
@@ -49,12 +41,13 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
       <label htmlFor="image" className="modal__label">
         Image
         <input
-          onChange={handleUrlChange}
+          onChange={handleChange}
           type="url"
           className="modal__input"
           id="image"
+          name="imageUrl"
           placeholder="Image URL"
-          value={imageUrl}
+          value={values.imageUrl}
           required
         />
       </label>
@@ -62,13 +55,13 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
         <legend className="modal__legend">Select the weather type:</legend>
         <div>
           <input
-            onChange={handleWeatherTypeChange}
+            onChange={handleChange}
             type="radio"
             className="modal__input_radio"
             id="hot"
-            name="weather-type"
+            name="weather"
             value="hot"
-            checked={weather === "hot"}
+            checked={values.weather === "hot"}
           />
           <label htmlFor="hot" className="modal__label_radio">
             Hot
@@ -76,13 +69,13 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
         </div>
         <div>
           <input
-            onChange={handleWeatherTypeChange}
+            onChange={handleChange}
             type="radio"
             className="modal__input_radio"
             id="warm"
-            name="weather-type"
+            name="weather"
             value="warm"
-            checked={weather === "warm"}
+            checked={values.weather === "warm"}
           />
           <label htmlFor="warm" className="modal__label_radio">
             Warm
@@ -90,13 +83,13 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal }) {
         </div>
         <div>
           <input
-            onChange={handleWeatherTypeChange}
+            onChange={handleChange}
             type="radio"
             className="modal__input_radio"
             id="cold"
-            name="weather-type"
+            name="weather"
             value="cold"
-            checked={weather === "cold"}
+            checked={values.weather === "cold"}
           />
           <label htmlFor="cold" className="modal__label_radio">
             Cold

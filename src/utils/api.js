@@ -1,13 +1,20 @@
 const baseUrl = "http://localhost:3001";
 
+function checkResponse(res) {
+  return res ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
+function request(url, options) {
+  return fetch(url, options).then(checkResponse);
+}
+
 function getClothingItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  // return fetch(`${baseUrl}/items`).then(checkResponse);
+  return request(`${baseUrl}/items`);
 }
 
 function addClothingItem({ name, imageUrl, weather }) {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,20 +24,15 @@ function addClothingItem({ name, imageUrl, weather }) {
       imageUrl,
       weather,
     }),
-  }).then((res) => {
-    return res ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
 }
 
 function deleteClothingItem(item) {
-  return fetch(`${baseUrl}/items/${item._id}`, {
+  return request(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => {
-    console.log(res);
-    return res ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
 }
 
