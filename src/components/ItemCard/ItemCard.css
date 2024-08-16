@@ -2,6 +2,13 @@
   position: relative;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.2s linear;
+}
+
+.clothing__item:hover {
+  opacity: 0.6;
 }
 
 .clothing__title {
