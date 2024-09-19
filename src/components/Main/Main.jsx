@@ -6,6 +6,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 
 function Main({ weatherData, handleItemClick, clothingItems }) {
   const currentTemp = useContext(CurrentTemperatureUnitContext);
+  // console.log("clothingItems");
+
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -15,7 +17,7 @@ function Main({ weatherData, handleItemClick, clothingItems }) {
           {currentTemp.currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="clothing__list">
-          {clothingItems
+          {/* {clothingItems
             .filter((item) => {
               return item.weather === weatherData.type;
             })
@@ -27,7 +29,7 @@ function Main({ weatherData, handleItemClick, clothingItems }) {
                   onItemClick={handleItemClick}
                 />
               );
-            })}
+            })} */}
         </ul>
       </section>
     </main>

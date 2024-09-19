@@ -9,15 +9,16 @@ function request(url, options) {
 }
 
 function getClothingItems() {
-  // return fetch(`${baseUrl}/items`).then(checkResponse);
   return request(`${baseUrl}/items`);
 }
 
-function addClothingItem({ name, imageUrl, weather }) {
+function addClothingItem({ name, imageUrl, weather }, {token}) {
+  console.log(token);
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -27,13 +28,14 @@ function addClothingItem({ name, imageUrl, weather }) {
   });
 }
 
-function deleteClothingItem(item) {
+function deleteClothingItem(item, token) {
   return request(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
     },
   });
 }
 
-export { getClothingItems, addClothingItem, deleteClothingItem };
+export { getClothingItems, addClothingItem, deleteClothingItem, baseUrl };
