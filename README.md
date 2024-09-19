@@ -28,5 +28,5 @@ Note: some systems may require "Sudo" to be placed before the "npm" for elevated
 
 ## Links
 
-- [Figma Design] (https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&t=SJTF8EzzlwWEqOvg-0)
+- [Figma Design] (https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Project Website] (https://matthew-wright9630.github.io/se_project_react/)
