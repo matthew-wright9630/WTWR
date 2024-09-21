@@ -64,7 +64,7 @@
   gap: 12px;
 }
 
-.header__add-button {
+.header__button {
   padding: 0;
   border: 0;
   width: 116px;
@@ -72,6 +72,10 @@
   cursor: pointer;
   opacity: 1;
   transition: 0.2s linear;
+}
+
+.header__add-button {
+  
 }
 
 .header__add-button:hover {
@@ -103,13 +107,13 @@
 }
 
 .header__sign-up-btn {
-  padding: 0;
+  /* padding: 0;
   border: 0;
   width: 116px;
   font-weight: 700;
   cursor: pointer;
   opacity: 1;
-  transition: 0.2s linear;
+  transition: 0.2s linear; */
 }
 
 .header__menu-close-button {

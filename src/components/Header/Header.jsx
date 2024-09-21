@@ -40,7 +40,7 @@ function Header({
                 toggleMobileMenu();
               }}
               type="button"
-              className="header__add-button"
+              className="header__add-button header__button"
             >
               + Add clothes
             </button>
@@ -58,14 +58,14 @@ function Header({
             <button
               onClick={handleSignUpClick}
               type="button"
-              className="header__sign-up-btn"
+              className="header__sign-up-btn header__button"
             >
               Sign Up
             </button>
             <button
               onClick={handleLoginClick}
               type="button"
-              className="header__log-in-btn"
+              className="header__log-in-btn header__button"
             >
               Log In
             </button>

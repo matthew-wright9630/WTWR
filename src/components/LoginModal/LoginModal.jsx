@@ -47,6 +47,7 @@ function LoginModal({ isOpen, onCloseModal, handleLogin, isLoading }) {
           placeholder="password"
           value={values.password}
           required={true}
+          autoComplete="current-password"
         />
       </label>
     </ModalWithForm>

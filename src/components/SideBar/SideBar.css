@@ -1,5 +1,8 @@
 .sidebar {
   max-width: 10vw;
+}
+
+.sidebar__profile {
   display: flex;
   gap: 16px;
   align-items: center;
@@ -15,9 +18,55 @@
   font-weight: 700;
 }
 
+.sidebar__buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar__change-info {
+  padding: 0;
+  border: 0;
+  /* width: 116px; */
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.2s linear;
+  background-color: #f3f3f3;
+}
+
+.sidebar__change-info:hover {
+  opacity: .7;
+}
+
+.sidebar__logout {
+  padding: 0;
+  border: 0;
+  /* width: 100%; */
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.2s linear;
+  background-color: #f3f3f3;
+}
+
+.sidebar__logout:hover {
+  opacity: .7;
+}
+
 @media screen and (max-width: 580px) {
   .sidebar {
     margin-left: auto;
+    max-width: 90vw;
+    width: 90vw;
+  }
+
+  .sidebar__profile {
+    width: 100%;
+    justify-content: center;
   }
 
   .sidebar__name {

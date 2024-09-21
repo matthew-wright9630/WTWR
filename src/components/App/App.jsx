@@ -181,10 +181,8 @@ function App() {
       .catch(console.error);
 
     getClothingItems()
-      .then((data) => {
-        console.log(clothingItems, "BEFORE");
-        // console.log("GetClothingItems");
-        setClothingItems(data);
+      .then((cards) => {
+        setClothingItems(cards.data);
       })
       .catch(console.error);
 

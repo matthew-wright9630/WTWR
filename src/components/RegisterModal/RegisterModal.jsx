@@ -69,6 +69,7 @@ function RegisterModal({
           placeholder="username"
           value={values.name}
           required={true}
+          autoComplete="username"
         />
       </label>
       <label htmlFor="avatar" className="modal__label">
