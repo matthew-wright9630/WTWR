@@ -9,8 +9,6 @@ function ClothesSection({
   clothingItems,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
-  console.log("CurrentUser._id: ", currentUser?._id);
   return (
     <div className="clothing-section">
       <div className="clothing-section__header">
@@ -26,10 +24,10 @@ function ClothesSection({
       <div className="clothing-section__items">
         <ul className="clothing__list clothing-section__list">
           {clothingItems
-            // .filter((item) => {
-            // const isOwn = item.owner === currentUser?._id;
-            // return isOwn;
-            // })
+            .filter((item) => {
+            const isOwn = item.owner === currentUser?._id;
+            return isOwn;
+            })
             .map((item) => {
               return (
                 <ItemCard

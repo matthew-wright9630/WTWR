@@ -150,7 +150,11 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUser({});
+    setIsLoggedIn(false);
+  };
 
   const openConfirmationModal = () => {
     setActiveModal("card-delete-modal");
@@ -245,7 +249,7 @@ function App() {
         console.error(err);
         setIsLoggedIn(false);
       });
-  }, [userData]);
+  }, [userData, isLoggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -283,6 +287,7 @@ function App() {
                       handleItemClick={handleItemClick}
                       clothingItems={clothingItems}
                       handleChangeProfileClick={handleChangeProfileClick}
+                      handleLogout={handleLogout}
                     />
                   </ProtectedRoute>
                 }

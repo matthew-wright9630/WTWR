@@ -41,6 +41,7 @@ function RegisterModal({
           placeholder="email"
           value={values.email}
           required={true}
+          autoComplete="username"
         />
       </label>
       <label htmlFor="password" className="modal__label">

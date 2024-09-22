@@ -3,12 +3,12 @@ import { useForm } from "../../hooks/useForm";
 
 function LoginModal({ isOpen, onCloseModal, handleLogin, isLoading }) {
   const { values, handleChange, setValues } = useForm({
-    loginEmail: "",
+    email: "",
     password: "",
   });
 
   const handleReset = () => {
-    setValues({ loginEmail: "", password: "" });
+    setValues({ email: "", password: "" });
   };
 
   return (
@@ -34,6 +34,7 @@ function LoginModal({ isOpen, onCloseModal, handleLogin, isLoading }) {
           placeholder="email"
           value={values.email}
           required={true}
+          autoComplete="username"
         />
       </label>
       <label htmlFor="password" className="modal__label">
