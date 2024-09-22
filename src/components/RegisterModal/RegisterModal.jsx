@@ -27,7 +27,6 @@ function RegisterModal({
       buttonText={isLoading ? "Registering..." : "Sign Up"}
       handleSubmit={(evt) => {
         evt.preventDefault();
-        console.log(values);
         handleRegistration(values, handleReset);
       }}
     >

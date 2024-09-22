@@ -5,11 +5,9 @@ function ProtectedRoute({ isLoggedIn, children, anonymous = false }) {
   const from = location.state?.from;
 
   if (anonymous && isLoggedIn) {
-    console.log(from, "from");
     return <Navigate to={from} />;
   }
   if (!anonymous && !isLoggedIn) {
-    console.log(location, "location");
     return <Navigate to="/" state={{ from: location }} />;
   }
 

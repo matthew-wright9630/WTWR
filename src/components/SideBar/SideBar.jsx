@@ -3,7 +3,7 @@ import avatar from "../../assets/avatar.png";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function SideBar() {
+function SideBar({handleChangeProfileClick}) {
   const user = useContext(CurrentUserContext);
   return (
     <div className="sidebar">
@@ -16,7 +16,7 @@ function SideBar() {
         <p className="sidebar__name">{user.name}</p>
       </div>
       <div className="sidebar__buttons">
-        <button type="button" className="sidebar__change-info">Change profile data</button>
+        <button type="button" onClick={handleChangeProfileClick} className="sidebar__change-info">Change profile data</button>
         <button type="button" className="sidebar__logout">Log out</button>
       </div>
     </div>

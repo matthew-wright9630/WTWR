@@ -16,6 +16,7 @@ import {
   addClothingItem,
   deleteClothingItem,
   getClothingItems,
+  editProfileInfo,
 } from "../../utils/api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -24,6 +25,7 @@ import { checkToken } from "../../utils/auth";
 import LoginModal from "../LoginModal/LoginModal";
 import * as auth from "../../utils/auth";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ChangeProfileModal from "../ChangeProfileModal/ChangeProfileModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -60,6 +62,10 @@ function App() {
 
   const handleLoginClick = () => {
     setActiveModal("login-modal");
+  };
+
+  const handleChangeProfileClick = () => {
+    setActiveModal("edit-profile-modal");
   };
 
   const handleCloseModal = () => {
@@ -103,18 +109,14 @@ function App() {
     if (!email || !password) {
       return;
     }
-    console.log("test");
 
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log("login successful");
         if (data) {
-          console.log(data, "data in the handleLogin function");
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           resetForm();
-          console.log(isLoggedIn, "is logged in in the handleLogin function");
         }
       })
       .catch(console.error);
@@ -131,6 +133,25 @@ function App() {
       .catch(console.error);
   };
 
+  const handleChangeProfile = (values, resetForm) => {
+    setIsLoading(true);
+    editProfileInfo(values, { token: localStorage.getItem("jwt") })
+      .then((profile) => {
+        setUserData({
+          name: profile.name,
+          avatar: profile.avatar,
+          email: profile.email,
+          _id: currentUser._id,
+        });
+        handleCloseModal();
+        resetForm();
+      })
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
+  };
+
+  const handleLogout = () => {};
+
   const openConfirmationModal = () => {
     setActiveModal("card-delete-modal");
   };
@@ -139,6 +160,7 @@ function App() {
   const isConfirmationModalOpen = activeModal === "card-delete-modal";
   const isRegistrationModalOpen = activeModal === "registration-modal";
   const isLoginModalOpen = activeModal === "login-modal";
+  const isChangeProfileModalOpen = activeModal === "edit-profile-modal";
 
   useEffect(() => {
     if (!activeModal) return;
@@ -185,12 +207,9 @@ function App() {
         setClothingItems(cards.data);
       })
       .catch(console.error);
-
   }, []);
 
   useEffect(() => {
-    // console.log("test");
-    // localStorage.removeItem("jwt");
     const token = localStorage.getItem("jwt");
 
     if (!token) {
@@ -208,6 +227,25 @@ function App() {
         setIsLoggedIn(false);
       });
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (!token) {
+      return;
+    }
+
+    auth
+      .checkToken(token)
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoggedIn(false);
+      });
+  }, [userData]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -244,6 +282,7 @@ function App() {
                       handleAddButtonClick={handleAddButtonClick}
                       handleItemClick={handleItemClick}
                       clothingItems={clothingItems}
+                      handleChangeProfileClick={handleChangeProfileClick}
                     />
                   </ProtectedRoute>
                 }
@@ -281,6 +320,12 @@ function App() {
               isOpen={isLoginModalOpen}
               onCloseModal={handleCloseModal}
               handleLogin={handleLogin}
+              isLoading={isLoading}
+            />
+            <ChangeProfileModal
+              isOpen={isChangeProfileModalOpen}
+              onCloseModal={handleCloseModal}
+              handleChangeProfile={handleChangeProfile}
               isLoading={isLoading}
             />
           </div>

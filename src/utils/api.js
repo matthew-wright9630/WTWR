@@ -12,13 +12,12 @@ function getClothingItems() {
   return request(`${baseUrl}/items`);
 }
 
-function addClothingItem({ name, imageUrl, weather }, {token}) {
-  console.log(token);
+function addClothingItem({ name, imageUrl, weather }, { token }) {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -33,9 +32,30 @@ function deleteClothingItem(item, token) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 }
 
-export { getClothingItems, addClothingItem, deleteClothingItem, baseUrl };
+function editProfileInfo({ name, avatar }, { token }) {
+  console.log(token, "token being passed in editProfileInfo");
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  });
+}
+
+export {
+  getClothingItems,
+  addClothingItem,
+  deleteClothingItem,
+  editProfileInfo,
+  baseUrl,
+};

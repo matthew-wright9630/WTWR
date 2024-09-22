@@ -16,21 +16,19 @@ function Main({ weatherData, handleItemClick, clothingItems }) {
           {currentTemp.currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="clothing__list">
-          {!clothingItems
-            ? console.log("Empty Array")
-            : clothingItems
-                .filter((item) => {
-                  return item.weather === weatherData.type;
-                })
-                .map((item) => {
-                  return (
-                    <ItemCard
-                      key={item._id}
-                      item={item}
-                      onItemClick={handleItemClick}
-                    />
-                  );
-                })}
+          {clothingItems
+            ?.filter((item) => {
+              return item.weather === weatherData.type;
+            })
+            ?.map((item) => {
+              return (
+                <ItemCard
+                  key={item._id}
+                  item={item}
+                  onItemClick={handleItemClick}
+                />
+              );
+            })}
         </ul>
       </section>
     </main>
