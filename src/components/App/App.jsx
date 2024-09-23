@@ -17,6 +17,8 @@ import {
   deleteClothingItem,
   getClothingItems,
   editProfileInfo,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -158,6 +160,28 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  function handleCardLike(id, isLiked) {
+    const token = localStorage.getItem("jwt");
+    if (!isLiked) {
+      addCardLike(id, token)
+        .then((updatedCard) => {
+          console.log("This is the like function", id, token);
+          setClothingItems((cards) => {
+            cards.map((item) => (item._id === id ? updatedCard : item));
+          });
+        })
+        .catch((err) => console.error(err));
+    } else {
+      removeCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) => {
+            cards.map((item) => (item._id === id ? updatedCard : item));
+          });
+        })
+        .catch(console.error);
+    }
+  }
+
   const openConfirmationModal = () => {
     setActiveModal("card-delete-modal");
   };
@@ -277,6 +301,7 @@ function App() {
                     weatherData={weatherData}
                     handleItemClick={handleItemClick}
                     clothingItems={clothingItems}
+                    handleCardLike={handleCardLike}
                   />
                 }
               ></Route>
@@ -290,6 +315,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleChangeProfileClick={handleChangeProfileClick}
                       handleLogout={handleLogout}
+                      handleCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

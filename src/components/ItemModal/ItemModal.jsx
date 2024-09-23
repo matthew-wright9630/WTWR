@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-
+import React, { useContext, useEffect } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./ItemModal.css";
 
 function ItemModal({
@@ -8,6 +8,13 @@ function ItemModal({
   handleCloseModal,
   openConfirmationModal,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
+  const isOwn = selectedItem.owner === currentUser._id;
+  const itemDeleteButtonClassName = (
+    `modal__delete-btn ${isOwn ? 'modal__delete-btn_visible' : 'modal__delete-btn_hidden'}`
+  );
+
   return (
     <div
       className={`modal ${activeModal === "item-modal" ? "modal_opened" : ""}`}
@@ -33,7 +40,7 @@ function ItemModal({
           <button
             onClick={openConfirmationModal}
             type="button"
-            className="modal__delete-btn"
+            className={itemDeleteButtonClassName}
           >
             Delete Item
           </button>

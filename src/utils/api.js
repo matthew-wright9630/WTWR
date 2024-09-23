@@ -51,10 +51,33 @@ function editProfileInfo({ name, avatar }, { token }) {
   });
 }
 
+function addCardLike(id, token) {
+  console.log("api call", id);
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content=Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+function removeCardLike({ id, token }) {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content=Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export {
   getClothingItems,
   addClothingItem,
   deleteClothingItem,
   editProfileInfo,
+  addCardLike,
+  removeCardLike,
   baseUrl,
 };
