@@ -116,6 +116,7 @@ function App() {
         if (data) {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
+          handleCloseModal();
           resetForm();
         }
       })
@@ -129,6 +130,7 @@ function App() {
         navigate("/");
         handleLogin(email, password);
         resetForm();
+        handleCloseModal();
       })
       .catch(console.error);
   };

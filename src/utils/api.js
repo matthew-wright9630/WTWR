@@ -38,7 +38,6 @@ function deleteClothingItem(item, token) {
 }
 
 function editProfileInfo({ name, avatar }, { token }) {
-  console.log(token, "token being passed in editProfileInfo");
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {

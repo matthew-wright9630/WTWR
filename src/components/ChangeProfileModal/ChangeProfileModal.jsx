@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 function ChangeProfileModal({
   isOpen,
@@ -9,20 +9,22 @@ function ChangeProfileModal({
   handleChangeProfile,
   isLoading,
 }) {
-  const user = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   const { values, handleChange, setValues } = useForm({
     name: "",
     avatar: "",
   });
 
-  const openModal = () => {
-    setValues({ name: user.name, avatar: user.avatar });
-  }
-
   const handleReset = () => {
     setValues({ name: "", avatar: "" });
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setValues({ name: currentUser?.name, avatar: currentUser?.avatar });
+    }
+  }, [isOpen, currentUser]);
 
   return (
     <ModalWithForm

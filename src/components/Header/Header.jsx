@@ -47,7 +47,7 @@ function Header({
             <Link className="header__profile-link" to="/profile">
               <p className="header__profile-name">{user.name}</p>
               <img
-                src={user.avatar}
+                src={user.avatar ? user?.avatar : user?.name.substring(0, 1)}
                 alt="Proflie Avatar"
                 className="header__profile-avatar"
               />
