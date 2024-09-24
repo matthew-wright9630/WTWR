@@ -96,7 +96,7 @@ function App() {
 
   const handleCardDelete = (itemToDelete) => {
     setIsLoading(true);
-    deleteClothingItem(itemToDelete)
+    deleteClothingItem(itemToDelete, { token: localStorage.getItem("jwt") })
       .then(() => {
         setClothingItems((prev) =>
           prev.filter((item) => item._id !== itemToDelete._id)
