@@ -34,7 +34,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
           id="name"
           placeholder="Name"
           value={values.name}
-          required
+          required={true}
           minLength={2}
         />
       </label>
@@ -48,10 +48,10 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
           name="imageUrl"
           placeholder="Image URL"
           value={values.imageUrl}
-          required
+          required={true}
         />
       </label>
-      <fieldset className="modal__fieldset_radio" required>
+      <fieldset className="modal__fieldset_radio" required={true}>
         <legend className="modal__legend">Select the weather type:</legend>
         <div>
           <input

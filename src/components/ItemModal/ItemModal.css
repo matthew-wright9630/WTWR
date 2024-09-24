@@ -48,6 +48,14 @@
   opacity: 0.5;
 }
 
+.modal__delete-btn_hidden {
+  visibility: hidden;
+}
+
+.modal__delete-btn_visible {
+  visibility: visible;
+}
+
 @media screen and (max-width: 580px) {
   .modal__container_item {
     width: 343px;

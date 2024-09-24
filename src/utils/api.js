@@ -9,15 +9,15 @@ function request(url, options) {
 }
 
 function getClothingItems() {
-  // return fetch(`${baseUrl}/items`).then(checkResponse);
   return request(`${baseUrl}/items`);
 }
 
-function addClothingItem({ name, imageUrl, weather }) {
+function addClothingItem({ name, imageUrl, weather }, { token }) {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -27,13 +27,56 @@ function addClothingItem({ name, imageUrl, weather }) {
   });
 }
 
-function deleteClothingItem(item) {
+function deleteClothingItem(item, { token }) {
   return request(`${baseUrl}/items/${item._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 }
 
-export { getClothingItems, addClothingItem, deleteClothingItem };
+function editProfileInfo({ name, avatar }, { token }) {
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      avatar,
+    }),
+  });
+}
+
+function addCardLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+function removeCardLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export {
+  getClothingItems,
+  addClothingItem,
+  deleteClothingItem,
+  editProfileInfo,
+  addCardLike,
+  removeCardLike,
+  baseUrl,
+};
