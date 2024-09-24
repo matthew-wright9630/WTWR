@@ -1,7 +1,14 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
+import "./LoginModal.css";
 
-function LoginModal({ isOpen, onCloseModal, handleLogin, isLoading }) {
+function LoginModal({
+  isOpen,
+  onCloseModal,
+  handleLogin,
+  isLoading,
+  handleSignUpClick,
+}) {
   const { values, handleChange, setValues } = useForm({
     email: "",
     password: "",
@@ -51,6 +58,13 @@ function LoginModal({ isOpen, onCloseModal, handleLogin, isLoading }) {
           autoComplete="current-password"
         />
       </label>
+      <button
+        type="button"
+        onClick={handleSignUpClick}
+        className="modal__signup-btn"
+      >
+        or Sign up
+      </button>
     </ModalWithForm>
   );
 }

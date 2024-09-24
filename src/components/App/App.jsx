@@ -353,12 +353,14 @@ function App() {
               onCloseModal={handleCloseModal}
               handleRegistration={handleRegistration}
               isLoading={isLoading}
+              handleLoginClick={handleLoginClick}
             />
             <LoginModal
               isOpen={isLoginModalOpen}
               onCloseModal={handleCloseModal}
               handleLogin={handleLogin}
               isLoading={isLoading}
+              handleSignUpClick={handleSignUpClick}
             />
             <ChangeProfileModal
               isOpen={isChangeProfileModalOpen}

@@ -1,11 +1,13 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
+import "./RegistrationModal.css";
 
 function RegisterModal({
   isOpen,
   onCloseModal,
   handleRegistration,
   isLoading,
+  handleLoginClick,
 }) {
   const { values, handleChange, setValues } = useForm({
     email: "",
@@ -85,6 +87,13 @@ function RegisterModal({
           required={true}
         />
       </label>
+      <button
+        type="button"
+        onClick={handleLoginClick}
+        className="modal__login-btn"
+      >
+        or Login
+      </button>
     </ModalWithForm>
   );
 }
