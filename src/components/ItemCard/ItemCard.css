@@ -3,20 +3,46 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
-  opacity: 1;
-  transition: 0.2s linear;
 }
 
-.clothing__item:hover {
-  opacity: 0.6;
-}
-
-.clothing__title {
+.clothing__item__header {
   position: absolute;
   margin: 0;
   top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.clothing__title {
+  margin: 0;
   color: rgba(0, 0, 0, 0.6);
   background-color: #fff;
+}
+
+.clothing__like-btn {
+  width: 18px;
+  height: 15px;
+  background-position: center;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.2s linear;
+  background-image: url("../../assets/likeButton_disliked.svg");
+}
+
+.clothing__like-btn:hover {
+  opacity: 0.6;
+}
+
+.clothing__like-btn_hidden {
+  visibility: hidden;
+}
+
+.clothing__like-btn_liked {
+  background-image: url("../../assets/likeButton_liked.svg");
 }
 
 .clothing__image {
