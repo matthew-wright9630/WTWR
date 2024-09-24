@@ -30,7 +30,6 @@
 .sidebar__change-info {
   padding: 0;
   border: 0;
-  /* width: 116px; */
   font-weight: 700;
   cursor: pointer;
   opacity: 1;
@@ -39,13 +38,12 @@
 }
 
 .sidebar__change-info:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .sidebar__logout {
   padding: 0;
   border: 0;
-  /* width: 100%; */
   font-weight: 700;
   cursor: pointer;
   opacity: 1;
@@ -54,7 +52,7 @@
 }
 
 .sidebar__logout:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 580px) {

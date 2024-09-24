@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./ItemCard.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onItemClick, handleCardLike }) {
-  // const [isLiked, setIsLiked] = useState(false);
-  const isLiked = item.likes.some(id => id === currentUser._id);
+  const currentUser = useContext(CurrentUserContext);
+  const isLiked = item.likes && item.likes.includes(item._id);
 
-// Create a variable which you then set in `className` for the like button
-const itemLikeButtonClassName = `...`;
+  const itemLikeButtonClassName = `...`;
 
   function handleLike() {
-    console.log("handleLike", item._id);
-    handleCardLike(item._id, true);
+    handleCardLike({ id: item._id, isLiked });
   }
 
   return (
@@ -20,9 +19,11 @@ const itemLikeButtonClassName = `...`;
         <button
           type="button"
           onClick={handleLike}
-          className={`clothing__like-btn ${
-            isLiked ? "clothing__like-btn_liked" : "clothing__like-btn_disliked"
-          }`}
+          className={`${
+            item?.owner === currentUser?._id
+              ? "clothing__like-btn"
+              : "clothing__like-btn_hidden"
+          } ${!isLiked ? "" : "clothing__like-btn_liked"}`}
         ></button>
       </div>
       <img

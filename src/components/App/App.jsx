@@ -160,14 +160,19 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  function handleCardLike(id, isLiked) {
+  function handleCardLike({ id, isLiked }) {
     const token = localStorage.getItem("jwt");
     if (!isLiked) {
       addCardLike(id, token)
         .then((updatedCard) => {
-          console.log("This is the like function", id, token);
           setClothingItems((cards) => {
-            cards.map((item) => (item._id === id ? updatedCard : item));
+            return cards.map((item) => {
+              if (item._id === id) {
+                return updatedCard;
+              } else {
+                return item;
+              }
+            });
           });
         })
         .catch((err) => console.error(err));
@@ -175,7 +180,7 @@ function App() {
       removeCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) => {
-            cards.map((item) => (item._id === id ? updatedCard : item));
+            return cards.map((item) => (item._id === id ? updatedCard : item));
           });
         })
         .catch(console.error);
