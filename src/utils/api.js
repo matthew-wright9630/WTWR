@@ -78,5 +78,7 @@ export {
   editProfileInfo,
   addCardLike,
   removeCardLike,
+  checkResponse,
+  request,
   baseUrl,
 };

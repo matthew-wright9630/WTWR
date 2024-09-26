@@ -45,7 +45,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState("", "", "", "");
+  const [userData, setUserData] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
 
@@ -80,31 +80,37 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (evt, values, resetForm) => {
-    evt.preventDefault();
+  function handleSubmit(request) {
     setIsLoading(true);
-    addClothingItem(values, { token: localStorage.getItem("jwt") })
-      .then((data) => {
-        setIsLoading(true);
-        setClothingItems([data, ...clothingItems]);
-        handleCloseModal();
-        resetForm();
-      })
+    request()
+      .then(handleCloseModal)
       .catch(console.error)
       .finally(() => setIsLoading(false));
+  }
+
+  const handleAddItemSubmit = (values, resetForm) => {
+    const makeRequest = () => {
+      return addClothingItem(values, {
+        token: localStorage.getItem("jwt"),
+      }).then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        resetForm();
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleCardDelete = (itemToDelete) => {
-    setIsLoading(true);
-    deleteClothingItem(itemToDelete, { token: localStorage.getItem("jwt") })
-      .then(() => {
+    const makeRequest = () => {
+      return deleteClothingItem(itemToDelete, {
+        token: localStorage.getItem("jwt"),
+      }).then((prev) => {
         setClothingItems((prev) =>
           prev.filter((item) => item._id !== itemToDelete._id)
         );
-        handleCloseModal();
-      })
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleLogin = ({ email, password }, resetForm) => {
@@ -138,20 +144,20 @@ function App() {
   };
 
   const handleChangeProfile = (values, resetForm) => {
-    setIsLoading(true);
-    editProfileInfo(values, { token: localStorage.getItem("jwt") })
-      .then((profile) => {
+    const makeRequest = () => {
+      return editProfileInfo(values, {
+        token: localStorage.getItem("jwt"),
+      }).then((profile) => {
         setUserData({
           name: profile.name,
           avatar: profile.avatar,
           email: profile.email,
           _id: currentUser._id,
         });
-        handleCloseModal();
         resetForm();
-      })
-      .catch(console.error)
-      .finally(() => setIsLoading(false));
+      });
+    };
+    handleSubmit(makeRequest);
   };
 
   const handleLogout = () => {
@@ -162,20 +168,23 @@ function App() {
 
   function handleCardLike({ id, isLiked }) {
     const token = localStorage.getItem("jwt");
+
+    const updateCardLikes = (updatedCard) => {
+      setClothingItems((cards) => {
+        return cards.map((item) => (item._id === id ? updatedCard : item));
+      });
+    };
+
     if (!isLiked) {
       addCardLike(id, token)
         .then((updatedCard) => {
-          setClothingItems((cards) => {
-            return cards.map((item) => (item._id === id ? updatedCard : item));
-          });
+          updateCardLikes(updatedCard);
         })
         .catch(console.error);
     } else {
       removeCardLike(id, token)
         .then((updatedCard) => {
-          setClothingItems((cards) => {
-            return cards.map((item) => (item._id === id ? updatedCard : item));
-          });
+          updateCardLikes(updatedCard);
         })
         .catch(console.error);
     }
@@ -256,25 +265,6 @@ function App() {
         setIsLoggedIn(false);
       });
   }, []);
-
-  useEffect(() => {
-    const token = localStorage.getItem("jwt");
-
-    if (!token) {
-      return;
-    }
-
-    auth
-      .checkToken(token)
-      .then((user) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsLoggedIn(false);
-      });
-  }, [userData, isLoggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -1,12 +1,5 @@
 import { baseUrl } from "./api";
-
-function checkResponse(res) {
-  return res ? res.json() : Promise.reject(`Error: ${res.status}`);
-}
-
-function request(url, options) {
-  return fetch(url, options).then(checkResponse);
-}
+import { request, checkResponse } from "./api";
 
 export const register = (email, password, name, avatar) => {
   return request(`${baseUrl}/signup`, {

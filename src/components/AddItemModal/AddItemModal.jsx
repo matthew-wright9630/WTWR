@@ -21,7 +21,7 @@ function AddItemModal({ isOpen, onAddItem, onCloseModal, isLoading }) {
       buttonText={isLoading ? "Saving..." : "Add Garment"}
       handleSubmit={(evt) => {
         evt.preventDefault();
-        onAddItem(evt, values, handleReset);
+        onAddItem(values, handleReset);
       }}
     >
       <label htmlFor="name" className="modal__label">
