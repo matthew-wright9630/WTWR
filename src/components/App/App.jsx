@@ -166,16 +166,10 @@ function App() {
       addCardLike(id, token)
         .then((updatedCard) => {
           setClothingItems((cards) => {
-            return cards.map((item) => {
-              if (item._id === id) {
-                return updatedCard;
-              } else {
-                return item;
-              }
-            });
+            return cards.map((item) => (item._id === id ? updatedCard : item));
           });
         })
-        .catch((err) => console.error(err));
+        .catch(console.error);
     } else {
       removeCardLike(id, token)
         .then((updatedCard) => {
