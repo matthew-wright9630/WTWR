@@ -32,7 +32,7 @@ function RegisterModal({
         handleRegistration(values, handleReset);
       }}
     >
-      <label htmlFor="email" className="modal__label">
+      <label className="modal__label">
         Email *
         <input
           onChange={handleChange}
@@ -46,7 +46,7 @@ function RegisterModal({
           autoComplete="username"
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label className="modal__label">
         Password *
         <input
           onChange={handleChange}
@@ -60,7 +60,7 @@ function RegisterModal({
           autoComplete="current-password"
         />
       </label>
-      <label htmlFor="username" className="modal__label">
+      <label className="modal__label">
         Name *
         <input
           onChange={handleChange}
@@ -74,7 +74,7 @@ function RegisterModal({
           autoComplete="username"
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label className="modal__label">
         Avatar URL *
         <input
           onChange={handleChange}

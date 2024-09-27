@@ -149,12 +149,14 @@ function App() {
       return editProfileInfo(values, {
         token: localStorage.getItem("jwt"),
       }).then((profile) => {
+        console.log(profile, "Response from the server");
         setUserData({
           name: profile.name,
           avatar: profile.avatar,
           email: profile.email,
-          _id: currentUser._id,
+          _id: profile._id,
         });
+        setCurrentUser(profile);
         resetForm();
       });
     };

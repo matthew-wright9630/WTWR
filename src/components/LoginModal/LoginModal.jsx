@@ -30,7 +30,7 @@ function LoginModal({
         handleLogin(values, handleReset);
       }}
     >
-      <label htmlFor="email" className="modal__label">
+      <label className="modal__label">
         Email *
         <input
           onChange={handleChange}
@@ -44,7 +44,7 @@ function LoginModal({
           autoComplete="username"
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label className="modal__label">
         Password *
         <input
           onChange={handleChange}

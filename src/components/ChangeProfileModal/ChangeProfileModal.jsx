@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 function ChangeProfileModal({
   isOpen,
