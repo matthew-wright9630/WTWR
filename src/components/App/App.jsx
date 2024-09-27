@@ -124,6 +124,7 @@ function App() {
         if (data) {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
+          setCurrentUser(data.user);
           handleCloseModal();
           resetForm();
         }
