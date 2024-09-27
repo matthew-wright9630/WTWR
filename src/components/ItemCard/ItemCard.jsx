@@ -20,7 +20,7 @@ function ItemCard({ item, onItemClick, handleCardLike }) {
           type="button"
           onClick={handleLike}
           className={`${
-            item?.owner === currentUser?._id
+            currentUser?._id
               ? "clothing__like-btn"
               : "clothing__like-btn_hidden"
           } ${!isLiked ? "" : "clothing__like-btn_liked"}`}
