@@ -55,7 +55,7 @@ function ChangeProfileModal({
         Avatar *
         <input
           onChange={handleChange}
-          type="avatar"
+          type="url"
           className="modal__input"
           id="changeProfileAvatar"
           name="avatar"

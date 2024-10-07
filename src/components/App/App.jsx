@@ -93,8 +93,10 @@ function App() {
       return addClothingItem(values, {
         token: localStorage.getItem("jwt"),
       }).then((data) => {
-        setClothingItems([data, ...clothingItems]);
-        resetForm();
+        if (data.name) {
+          setClothingItems([data, ...clothingItems]);
+          resetForm();
+        }
       });
     };
     handleSubmit(makeRequest);
@@ -121,7 +123,8 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        if (data) {
+        console.log(data);
+        if (data.user) {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
           setCurrentUser(data.user);
@@ -135,11 +138,14 @@ function App() {
   const handleRegistration = ({ email, password, name, avatar }, resetForm) => {
     auth
       .register(email, password, name, avatar)
-      .then(() => {
-        navigate("/");
-        handleLogin(email, password);
-        resetForm();
-        handleCloseModal();
+      .then((data) => {
+        console.log(data);
+        if (data.name) {
+          navigate("/");
+          handleLogin({ email, password }, resetForm);
+          resetForm();
+          handleCloseModal();
+        }
       })
       .catch(console.error);
   };

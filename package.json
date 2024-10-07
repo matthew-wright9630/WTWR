@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && scp -r ./dist/* darkkn1ght9630@wtwrmw.fairuse.org:/home/darkkn1ght9630/frontend"
   },
   "dependencies": {
     "mongoose": "^8.6.1",
@@ -28,5 +28,5 @@
     "gh-pages": "^6.1.1",
     "vite": "^5.3.4"
   },
-  "homepage": "https://matthew-wright9630.github.io/se_project_react/"
+  "homepage": "https://wtwrmw.fairuse.org/"
 }
