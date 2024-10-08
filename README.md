@@ -32,3 +32,4 @@ Note: some systems may require "Sudo" to be placed before the "npm" for elevated
 - [Frontend GitHub] (https://github.com/matthew-wright9630/se_project_react)
 - [Project Website] (https://www.wtwrmw.fairuse.org/profile)
 - [Backend Project] (https://github.com/matthew-wright9630/se_project_express)
+- [Demo of Project] (https://www.loom.com/share/c59a598c80d644188eb2e227eab78768?sid=bceaf71d-271f-4feb-8570-91ae51548d08)
