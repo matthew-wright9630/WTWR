@@ -123,7 +123,6 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log(data);
         if (data.user) {
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
@@ -139,7 +138,6 @@ function App() {
     auth
       .register(email, password, name, avatar)
       .then((data) => {
-        console.log(data);
         if (data.name) {
           navigate("/");
           handleLogin({ email, password }, resetForm);
