@@ -123,10 +123,11 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        if (data.user) {
+        if (data.token) {
+          console.log(data);
           localStorage.setItem("jwt", data.token);
           setIsLoggedIn(true);
-          setCurrentUser(data.user);
+          setUser(data.token);
           handleCloseModal();
           resetForm();
         }
@@ -148,12 +149,24 @@ function App() {
       .catch(console.error);
   };
 
+  const setUser = (token) => {
+    auth
+      .checkToken(token)
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoggedIn(false);
+      });
+  };
+
   const handleChangeProfile = (values, resetForm) => {
     const makeRequest = () => {
       return editProfileInfo(values, {
         token: localStorage.getItem("jwt"),
       }).then((profile) => {
-        console.log(profile, "Response from the server");
         setUserData({
           name: profile.name,
           avatar: profile.avatar,
@@ -261,16 +274,7 @@ function App() {
       return;
     }
 
-    auth
-      .checkToken(token)
-      .then((user) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsLoggedIn(false);
-      });
+    setUser(token);
   }, []);
 
   return (
