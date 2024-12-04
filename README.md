@@ -30,6 +30,6 @@ Note: some systems may require "Sudo" to be placed before the "npm" for elevated
 
 - [Figma Design] (https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Frontend GitHub] (https://github.com/matthew-wright9630/se_project_react)
-- [Project Website] (https://www.wtwrmw.fairuse.org/profile)
+- [Project Website] (https://www.wtwrmw.csproject.org/profile)
 - [Backend Project] (https://github.com/matthew-wright9630/se_project_express)
 - [Demo of Project] (https://www.loom.com/share/c59a598c80d644188eb2e227eab78768?sid=bceaf71d-271f-4feb-8570-91ae51548d08)

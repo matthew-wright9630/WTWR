@@ -1,6 +1,6 @@
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwrMW.fairuse.org"
+    ? "https://api.wtwrMW.csproject.org"
     : "http://localhost:3001";
 
 function checkResponse(res) {
